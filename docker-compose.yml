@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  nginx-reverse-proxy:
+    build: .
+    container_name: nginx-reverse-proxy
+    restart: always
+    volumes:
+      - $PWD/sites:/etc/nginx/sites-enabled
+    ports:
+      - "8080:80"
+      - "8443:443"
