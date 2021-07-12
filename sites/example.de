@@ -1,5 +1,5 @@
 server {
-  server_name alexohneander.de;
+  server_name example.de;
   listen 80;
 
   error_page 404 /404.html;

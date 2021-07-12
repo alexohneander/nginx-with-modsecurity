@@ -1,3 +1,3 @@
-# NGINX with Mod_Security support
+# NGINX with ModSecurity
 
 ## 
