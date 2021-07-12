@@ -42,7 +42,18 @@ RUN mkdir /etc/nginx/modsec && \
 # Copy ModSecurity Rule Set
 COPY main.conf /etc/nginx/modsec/main.conf
 
+# Download and install CoreRuleSet
+RUN mkdir /opt/rules && cd /opt/rules && \
+      wget https://github.com/coreruleset/coreruleset/archive/v3.3.2.tar.gz && \
+      tar -xvzf v3.3.2.tar.gz && \
+      ln -s coreruleset-3.3.2 /opt/rules/crs && \
+      cp crs/crs-setup.conf.example crs/crs-setup.conf && \
+      cd /
+
+# Test Site
 RUN cp /var/www/html/index.nginx-debian.html /var/www/html/index.html
+
+COPY crs-setup.conf /opt/rules/crs/crs-setup.conf
 
 EXPOSE 80
 
